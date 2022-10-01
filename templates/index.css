@@ -1,0 +1,25 @@
+h1 {
+    color: #F00;
+}
+
+form {
+    width: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form input {
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+table{
+    display: flex;
+    justify-content: center;
+    border: 0;
+}
+td {
+    min-width:  150px;
+    padding: 10;
+}

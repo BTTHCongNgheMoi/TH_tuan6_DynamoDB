@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <form action="/" method="post" enctype="multipart/form-data">
+        <input type="text" name="ma_sp" id="ma_sp" placeholder="Nhap ma sp.">
+        <input type="text" name="ten_sp" id="ten_sp" placeholder="Nhap ten sp.">
+        <input type="text" name="so_luong" id="so_luong" placeholder="Nhap so luong.">
+        <input type="file" name="image" id="image">
+        <input type="submit" value="Them sp">
+
+    </form>
+
+    <table border="1 ">
+        <tr>
+            <td>Ma SP</td>
+            <td>Ten SP</td>
+            <td>So Luong</td>
+            <td>Hinh Anh</td>
+            <td>About</td>
+        </tr>
+        <% for(let i = 0; i < sanPhams.length; i++) { %>
+            <tr>
+                <td>
+                    <%=sanPhams[i].ma_sp%>
+                </td>
+                <td>
+                    <%=sanPhams[i].ten_sp%>
+                </td>
+                <td>
+                    <%=sanPhams[i].so_luong%>
+                </td>
+                <td>
+                    <img src="<%=sanPhams[i].image_url%>" alt="anh" width="50px" />
+                </td>
+                <td>
+                    <form action="/delete" method="post" enctype="multipart/form-data">
+                        <input type="hidden" name="ma_sp" value="<%=sanPhams[i].ma_sp%>" />
+                        <input type="submit" value="Del" />
+                    </form>
+                    <form action="/update" method="get" enctype="multipart/form-data">
+                        <input type="text" name="ma_sp" value="<%=sanPhams[i]%>" />
+                        <input type="submit" value="update" />
+                    </form>
+
+                </td>
+            </tr>
+
+
+            <% } %>
+    </table>
+
+</body>
+
+</html>
