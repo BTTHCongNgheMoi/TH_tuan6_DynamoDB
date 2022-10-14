@@ -1,7 +1,7 @@
 const express = require('express');
 const multer = require('multer');
 require('dotenv').config();
-const { v4: uuid } = require("uuid");
+const { v4: uuid } = require("uuid"); //==================================
 const app = express();
 const AWS = require('aws-sdk');
 var path = require('path');
@@ -23,7 +23,7 @@ AWS.config.update({
 const docClient = new AWS.DynamoDB.DocumentClient();
 
 const tblName = "tblSanPham";
-// config s3
+// config s3 //==================================
 
 const s3 = new AWS.S3({
     accessKeyId: process.env.ACCESS_KEY_ID,
@@ -60,7 +60,7 @@ const upload = multer({
 });
 //
 const CLOUD_FRONT_URL = 'https://d16oshxfoau09o.cloudfront.net/';
-
+//==================================>
 
 //
 app.get('/', (req, res) => {
@@ -88,7 +88,7 @@ app.get('/update', (req, res) => {
         return res.render('form', { sanPham: data.ma_sp });
     })
 })
-
+//==================================<
 app.post('/', upload.single('image'), (req, res) => {
     const { ma_sp, ten_sp, so_luong } = req.body;
 
@@ -131,7 +131,9 @@ app.post('/', upload.single('image'), (req, res) => {
     })
 
 });
+//==================================>
 
+//==================================<
 app.post("/delete", upload.single('image'), (req, res) => {
 
     const { ma_sp } = req.body;
@@ -152,7 +154,7 @@ app.post("/delete", upload.single('image'), (req, res) => {
     });
 
 });
-
+//==================================>
 app.listen(8981, () => {
     console.log(`Example app listening on port 8981`)
 })
